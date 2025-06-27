@@ -1,6 +1,6 @@
 services:
   api-dev:
-    container_name: VsuetRSSDev
+    container_name: VsuetRSSDevServer
     image: python:3.13-slim
     user: 1000:1000
     ports:
@@ -10,7 +10,18 @@ services:
       - ./vsuetrssfeed:/app/vsuetrssfeed
     environment:
       - vsuetrss_api_docs=True
+      - vsuetrss_redis_url=redis://VsuetRSSRedis:6379
     working_dir: /app
-    tty: true
+    networks:
+      - vsuetrss
     entrypoint: ["/venv/bin/python-docker", "-m"]
     command: ["uvicorn", "vsuetrssfeed:root_api", "--host", "0.0.0.0", "--port", "8080", "--reload"]
+  redis:
+    container_name: VsuetRSSRedis
+    image: redis:latest
+    networks:
+      - vsuetrss
+
+networks:
+  vsuetrss:
+    external: False

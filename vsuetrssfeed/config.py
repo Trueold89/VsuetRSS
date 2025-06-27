@@ -19,7 +19,13 @@ class ChannelSettings(BaseSettings):
     vsuetess_rss_language: Optional[str] = "ru"
 
 
+class RedisSettings(BaseSettings):
+    vsuetrss_redis_url: str
+    vsuetrss_redis_expire: Optional[int] = 60
+
+
 api_settings = ApiSettings()
 scrapper_settings = ScrapperSettings()
 channel_settings = ChannelSettings()
+redis_settings = RedisSettings()
 version = "dev0"
