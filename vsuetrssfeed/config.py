@@ -12,6 +12,14 @@ class ScrapperSettings(BaseSettings):
     vsuetrss_scrapper_news_endpoint: Optional[str] = "/news"
 
 
+class ChannelSettings(BaseSettings):
+    vsuetrss_rss_title: Optional[str] = "vsuet.ru"
+    vsuetess_rss_link: Optional[str] = "https://vsuet.ru/news"
+    vsuetess_rss_description: Optional[str] = "Обновляемая лента новостей ВГУИТ"
+    vsuetess_rss_language: Optional[str] = "ru"
+
+
 api_settings = ApiSettings()
 scrapper_settings = ScrapperSettings()
+channel_settings = ChannelSettings()
 version = "dev0"
