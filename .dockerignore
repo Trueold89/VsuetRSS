@@ -1,0 +1,11 @@
+*venv
+.idea
+__pycache__
+foo*
+bar*
+*.egg-info
+build
+.ruff*
+dist
+build
+*.env

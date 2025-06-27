@@ -1,0 +1,19 @@
+annotated-types==0.7.0
+anyio==4.9.0
+click==8.2.1
+fastapi==0.115.14
+gunicorn==23.0.0
+h11==0.16.0
+idna==3.10
+packaging==25.0
+pydantic==2.11.7
+pydantic-settings==2.10.1
+pydantic_core==2.33.2
+python-dotenv==1.1.1
+redis==6.2.0
+sniffio==1.3.1
+starlette==0.46.2
+typing-inspection==0.4.1
+typing_extensions==4.14.0
+uvicorn==0.34.3
+vsuetrssfeed @ file:///mnt/Data/%D0%A4%D0%B0%D0%B9%D0%BB%D1%8B/%D0%91%D0%B8%D0%B1%D0%BB%D0%B8%D0%BE%D1%82%D0%B5%D0%BA%D0%B0/self_python/vsuetrurss/src
