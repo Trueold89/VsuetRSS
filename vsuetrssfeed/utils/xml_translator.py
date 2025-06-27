@@ -41,3 +41,7 @@ class XMLGenerator(object):
         for news in feed.items:
             self.translate_news(channel, news)
         return tostring(root, encoding="utf-8", method="xml")
+
+
+def gen_xml(feed: Feed) -> str:
+    return XMLGenerator().translate_feed(feed)
