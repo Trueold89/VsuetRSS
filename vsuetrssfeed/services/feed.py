@@ -8,6 +8,7 @@ class FeedService(object):
     """
     Менеджер генератора фида
     """
+
     scrapper: VsuetScrapper
     redis: RedisCache
 
@@ -43,8 +44,8 @@ class FeedService(object):
             "link": channel_settings.vsuetess_rss_link,
             "description": channel_settings.vsuetess_rss_description,
             "language": channel_settings.vsuetess_rss_language,
-            "pubDate": datetime.now().strftime('%a, %d %b %Y %H:%M:%S GMT'),
-            "items": await self.scrapper.get_feed(pages)
+            "pubDate": datetime.now().strftime("%a, %d %b %Y %H:%M:%S GMT"),
+            "items": await self.scrapper.get_feed(pages),
         }
         feed = Feed(**feed_settings)
         return gen_xml(feed)

@@ -1,10 +1,9 @@
-from xml.etree.ElementTree import Element, SubElement, ElementTree, tostring
+from xml.etree.ElementTree import Element, SubElement, tostring
 
 from vsuetrssfeed.models import Feed, News
 
 
 class XMLGenerator(object):
-
     @staticmethod
     def _add_tag(news: Element, tag: str) -> None:
         category = SubElement(news, "category")
@@ -26,8 +25,8 @@ class XMLGenerator(object):
             self._add_tag(item, tag)
 
     def translate_feed(self, feed: Feed) -> str:
-        root = Element('rss', version=feed.rss_version)
-        channel = SubElement(root, 'channel')
+        root = Element("rss", version=feed.rss_version)
+        channel = SubElement(root, "channel")
         title = SubElement(channel, "title")
         link = SubElement(channel, "link")
         description = SubElement(channel, "description")

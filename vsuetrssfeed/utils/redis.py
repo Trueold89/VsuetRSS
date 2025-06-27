@@ -40,5 +40,3 @@ class RedisCache(object):
     @_redis
     async def is_exist(self, key: str, redis: Redis) -> bool:
         return await redis.exists(key) > 0
-
-
