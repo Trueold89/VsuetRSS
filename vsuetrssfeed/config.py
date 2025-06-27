@@ -8,3 +8,4 @@ class ApiSettings(BaseSettings):
 
 
 api_settings = ApiSettings()
+version = "dev0"

@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 from vsuetrssfeed import api_settings
+from vsuetrssfeed.api.routers import service
 
 
 def init_api():
@@ -8,7 +9,9 @@ def init_api():
         "docs_url": "/docs" if api_settings.vsuetrss_api_docs else None,
         "redoc_url": "/redoc" if api_settings.vsuetrss_api_docs else None
     }
-    return FastAPI(**sets)
+    api = FastAPI(**sets)
+    api.include_router(service)
+    return api
 
 
 api = init_api()
