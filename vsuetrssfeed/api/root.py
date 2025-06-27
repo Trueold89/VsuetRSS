@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from vsuetrssfeed import api_settings
-from vsuetrssfeed.api.routers import service
+from vsuetrssfeed.api.routers import service, feed_router
 
 
 def init_api():
@@ -11,6 +11,7 @@ def init_api():
     }
     api = FastAPI(**sets)
     api.include_router(service)
+    api.include_router(feed_router)
     return api
 
 
