@@ -66,10 +66,12 @@ class VsuetScrapper(object):
         title = news.find("h3", class_="news__title")
         href = title.find("a").get("href")
         tags = news.find_all("a", class_="btn-sm label label-info")
+        description = news.find("div", class_="news__intro").text.strip()
+        image = f"{self.vsuet_base_url}{news.find("div", class_="preview-img")["style"].split()[1][4:-2]}"
         return News(
             title=title.text.strip(),
             link=f"{self.vsuet_base_url}{href}",
-            description=news.find("div", class_="news__intro").text.strip(),
+            description=f'<img src="{image}" /><p>{description}',
             pubdate=news.find("div", class_="news__datetime").text.strip(),
             guid=href.split("/")[-1],
             categories=list(map(lambda tag: tag.text.strip(), tags)),
