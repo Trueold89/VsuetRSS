@@ -4,6 +4,10 @@ from vsuetrssfeed.api.routers import service, feed_router
 
 
 def init_api():
+    """
+    Инциализирует FastAPI
+    :return: Root роутер FastAPI
+    """
     sets = {
         "root_path": api_settings.vsuetrss_api_root,
         "docs_url": "/docs" if api_settings.vsuetrss_api_docs else None,

@@ -4,12 +4,26 @@ from vsuetrssfeed.models import Feed, News
 
 
 class XMLGenerator(object):
+    """
+    Генератор XML документов из моделей
+    """
+
     @staticmethod
     def _add_tag(news: Element, tag: str) -> None:
+        """
+        Добавляет категорию новости
+        :param news: Элемент новости
+        :param tag: Категория
+        """
         category = SubElement(news, "category")
         category.text = tag
 
     def translate_news(self, parent: Element, news: News) -> None:
+        """
+        Переводит новость в XML
+        :param parent: Родительский объект
+        :param news: Новость
+        """
         item = SubElement(parent, "item")
         title = SubElement(item, "title")
         link = SubElement(item, "link")
@@ -25,6 +39,10 @@ class XMLGenerator(object):
             self._add_tag(item, tag)
 
     def translate_feed(self, feed: Feed) -> str:
+        """
+        Переводит ленту новостей в XML
+        :param feed: Лента новостей
+        """
         root = Element("rss", version=feed.rss_version)
         channel = SubElement(root, "channel")
         title = SubElement(channel, "title")
@@ -43,4 +61,9 @@ class XMLGenerator(object):
 
 
 def gen_xml(feed: Feed) -> str:
+    """
+    Генерирует XML запись ленты новостей
+    :param feed: Лента новостей
+    :return:
+    """
     return XMLGenerator().translate_feed(feed)

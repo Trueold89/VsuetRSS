@@ -14,6 +14,10 @@ class FeedService(object):
 
     @staticmethod
     def redis_cache(func):
+        """
+        Кэширует вывод функции
+        """
+
         async def wrapper(self, *args, **kwargs):
             key = func.__name__
             if await self.redis.is_exist(key):
@@ -28,6 +32,7 @@ class FeedService(object):
         """
         Менеджер генератора фида
         :param scrapper: Парсер ресурса
+        :param redis: Redis для кэширования
         """
         self.scrapper = scrapper
         self.redis = redis
