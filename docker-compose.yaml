@@ -1,0 +1,21 @@
+services:
+  api-dev:
+    container_name: VsuetRSSDevServer
+    build:
+      .
+    user: 1000:1000
+    ports:
+      - 8080:80/tcp
+    environment:
+      - vsuetrss_redis_url=redis://VsuetRSSRedis:6379
+    networks:
+      - vsuetrss
+  redis:
+    container_name: VsuetRSSRedis
+    image: redis:latest
+    networks:
+      - vsuetrss
+
+networks:
+  vsuetrss:
+    external: False
