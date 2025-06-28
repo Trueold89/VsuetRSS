@@ -41,6 +41,12 @@ class VsuetScrapper(object):
                 f"Ошибка подключения к сайту {self.vsuet_base_url}: {request.status}"
             )
 
+    async def ping(self) -> bool:
+        page = await self._get_request(self.news_endpoint)
+        if page is not None:
+            return True
+        return False
+
     async def _get_news_divs(self, page: int | None = None) -> ResultSet[PageElement]:
         """
         Получает html-представления новостей с ресурса vsuet
